@@ -1,0 +1,61 @@
+{% extends 'frontbase.html.twig' %}
+{% block title %}Siparişlerim - YK Shop{% endblock %}
+
+{% block header %} {% include ('home/_header.html.twig') %}{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{ asset('css') }}/etalage.css" type="text/css" media="all"/>
+
+<script src="{{ asset('js') }}/jquery.etalage.min.js"></script>
+
+
+
+
+<div class="container">
+
+    <div class="wrap-in">
+        <div>
+        </div>
+    </div>
+    <!-------------------->
+
+    <div class=" single_top">
+
+        <h2 style="color: #F97E76;">Siparişlerim</h2>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Ad Soyad</th>
+                <th>Tutar</th>
+                <th>Şehir</th>
+                <th>Telefon</th>
+                <th>Takip No</th>
+                <th>Sipariş Durumu</th>
+                <th>Detay</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.name }}</td>
+                    <td>₺ {{ order.amount }}</td>
+                    <td>{{ order.city }}</td>
+                    <td>{{ order.phone }}</td>
+                    <td>{{ order.shipinfo }}</td>
+                    <td>{{ order.status }}</td>
+                    <td>
+                        <a href="{{ path('orders_show', {'id': order.id}) }}" class="btn btn-block btn-success btn-large">Detay</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="11">Siparişiniz Bulunmamaktadır !</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    {% endblock %}
+    {% block sidebar %} {% include ('home/_usersidebar.html.twig') %}{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'frontbase.html.twig' %}
+{% block title %}Login - {{ data[0].title }}{% endblock %}
+{% block keywords %}{{ data[0].keywords }}{% endblock %}
+{% block description %}{{ data[0].description }}{% endblock %}
+{% block header %} {% include ('home/_header.html.twig') %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="shoes-grid">
+        </div>
+        <!-------------------->
+    <div class="account_grid">
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class=" login-right">
+            <h2>BİLGİLERİM</h2>
+        User Name: {{ app.user.name }} <br><br>
+        User Email: {{ app.user.email }}
+        </div>
+
+                {% else %}
+            <div class=" login-right">
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <h3>KAYITLI MÜŞTERİ</h3>
+    <p>Eğer hesabınız varsa, lütfen giriş yapınız.</p>
+    <div>
+        <span>Email Address<label>*</label></span>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail"  required autofocus>
+    </div>
+    <div>
+        <span>Password<label>*</label></span>
+    <input type="password" name="password" id="inputPassword" required>
+    </div>
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+
+    <input type="submit" value="Giriş Yap">
+</form>
+            </div>
+            <div class=" login-left">
+                <h3>YENİ MÜŞTERİ</h3>
+                <p>Mağazamızda bir hesap oluşturarak, ödeme işleminde daha hızlı ilerleyebilir, birden fazla gönderi adresi saklayabilir, siparişlerinizi hesabınızda görüntüleyebilir ve takip edebilirsiniz.</p>
+                <a class="acount-btn" href="{{ path('new_user') }}">HESAP OLUŞTUR</a>
+            </div>
+{% endif %}
+
+
+        <div class="clearfix"> </div>
+        <div class="clearfix"> </div>
+    </div>
+    {% endblock %}
+    {% block sidebar %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% include ('home/_usersidebar.html.twig') %}
+    {% else %}
+         {% include ('home/_sidebar.html.twig') %}
+    {% endif %}
+    {% endblock %}
+

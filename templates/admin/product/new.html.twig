@@ -1,0 +1,23 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}Ürün Ekleme{% endblock %}
+{% block content %}
+    <div id="content" xmlns="http://www.w3.org/1999/html">
+        <div id="content-header">
+            <div id="breadcrumb"> <a href="#"  class="tip-bottom"><i class="icon-glass"></i>Ürünler</a></div>
+            <h1>Ürün Ekleme
+            </h1>
+            <div class="widget-box">
+                <div class="widget-content nopadding">
+                    {{ include('admin/product/_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+{% endblock %}

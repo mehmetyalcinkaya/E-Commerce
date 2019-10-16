@@ -1,0 +1,94 @@
+{% extends 'frontbase.html.twig' %}
+{% block title %}{{ data[0].title }} - YK Shop{% endblock %}
+{% block keywords %}{{ data[0].keywords }}{% endblock %}
+{% block description %}{{ data[0].description }}{% endblock %}
+{% block header %} {% include ('home/_header.html.twig') %}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ asset('css') }}/etalage.css" type="text/css" media="all"/>
+
+<script src="/js/jquery.etalage.min.js"></script>
+
+<script>
+    jQuery(document).ready(function ($) {
+
+        $('#etalage').etalage({
+            thumb_image_width: 300,
+            thumb_image_height: 300,
+            source_image_width: 600,
+            source_image_height: 600,
+            show_hint: false,
+            click_callback: function (image_anchor, instance_id) {
+                alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
+            }
+        });
+    });
+</script>
+
+
+<div class="container">
+
+    <div class="wrap-in">
+        <div>
+        </div>
+    </div>
+    <!-------------------->
+
+    <div class=" single_top">
+        <div class="single_grid">
+            <div class="grid images_3_of_2">
+                <ul id="etalage">
+                    <li>
+                        <a href="#">
+                            <img class="etalage_thumb_image" src="{{ asset('uploads') }}/images/{{ data[0].image }}"
+                                 class="img-responsive"/>
+                            <img class="etalage_source_image" src="{{ asset('uploads') }}/images/{{ data[0].image }}"
+                                 class="img-responsive" />
+                        </a>
+                    </li>
+                    {% for rs in images %}
+                        <li>
+                            <img class="etalage_thumb_image" src="{{ asset('uploads') }}/images/{{ rs.image }}"
+                                 class="img-responsive"/>
+                            <img class="etalage_source_image" src="{{ asset('uploads') }}/images/{{ rs.image }}"
+                                 class="img-responsive" />
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <form name="shopcart" action="{{ path('shopcart_new') }}" method="post" >
+            <div class="desc1 span_3_of_2">
+
+                <h4>{{ data[0].title }}</h4>
+                <div class="cart-b">
+                    <div class="left-n ">₺ {{ data[0].sprice }}</div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="cart-c">
+                    <input type="number" name="shopcart[quantity]" class="left-nn"  min="1" max="{{ data[0].amount }}" value="1">
+                    <input type="hidden" name="shopcart[productid]"  value="{{ data[0].id }}">
+                    <button class="now-get get-cart-in" href="#">SEPETE EKLE</button>
+                    <input type="hidden" name="token" value="{{ csrf_token('add-item') }}" />
+                    <div class="clearfix"></div>
+                </div>
+                <h6>{{ data[0].amount }} Adet stokta var</h6>
+                <p>{{ data[0].description }}</p>
+            </div>
+            </form>
+            <div class="clearfix"></div>
+
+        </div>
+        <div class="toogle">
+            <h3 class="m_3">Ürün Detayı</h3>
+            <p class="m_text">{{ data[0].detail|raw }}</p>
+        </div>
+    </div>
+
+    {% endblock %}
+    {% block sidebar %} {% include ('home/_sidebar.html.twig') %}{% endblock %}
+
+
+
+

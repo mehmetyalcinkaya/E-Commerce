@@ -1,0 +1,19 @@
+{% extends 'frontbase.html.twig' %}
+{% block title %}Satın Al - YK Shop{% endblock %}
+
+{% block header %} {% include ('home/_header.html.twig') %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="shoes-grid">
+    </div>
+    <!-------------------->
+    <div class="account_grid">
+        <div class=" login-right">
+
+    {{ include('orders/_form.html.twig') }}
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    {% endblock %}
+    {% block sidebar %} {% include ('home/_usersidebar.html.twig') %}{% endblock %}

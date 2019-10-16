@@ -1,0 +1,138 @@
+
+<form class="form-horizontal" method="post">
+    <div class="widget-box">
+        <div class="widget-title">
+            <ul class="nav nav-tabs">
+                <li class="active" ><a data-toggle="tab" href="#tab1">Genel Bilgiler</a></li>
+                <li ><a data-toggle="tab" href="#tab2">Email Server</a></li>
+                <li ><a data-toggle="tab" href="#tab3">İletişim Sayfası</a></li>
+                <li ><a data-toggle="tab" href="#tab4">Hakkımızda Sayfası</a></li>
+                <li ><a data-toggle="tab" href="#tab5">Referanslar Sayfası</a></li>
+            </ul>
+        </div>
+        <div class="widget-content tab-content">
+            <div id="tab1" class="tab-pane active">
+                <div class="control-group">
+                    <label class="control-label">Adı :</label>
+                    <div class="controls">
+                        <input type="text" name="setting[title]" value="{{setting.title}}" class="span9 form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Anahtar Kelimeler :</label>
+                    <div class="controls">
+                        <input type="text" name="setting[keywords]" value="{{setting.keywords}}" class="span9 form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Kısa Açıklama :</label>
+                    <div class="controls">
+                        <input type="text" name="setting[description]" value="{{setting.description}}" class="span9 form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Firma Adı :</label>
+                    <div class="controls">
+                        <input type="text" name="setting[company]" value="{{setting.company}}" class="span9 form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Adresi :</label>
+                    <div class="controls">
+                        <input type="text" name="setting[adress]" value="{{setting.adress}}" class="span9 form-control">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Fax :</label>
+                    <div class="controls">
+                        <input type="text" name="setting[fax]" value="{{setting.fax}}" class="span9 form-control" >
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Telefon :</label>
+                    <div class="controls">
+                        <input type="text" name="setting[phone]" value="{{setting.phone}}" class="span9 form-control" >
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Aktif Durumu</label>
+                    <div class="controls">
+                        <select name="setting[status]" class="form-control" >
+                            <option>{{ setting.status }}</option>
+                            <option value="True">True</option>
+                            <option  value="False">False</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="tab2" class="tab-pane">
+                <div class="control-group">
+                    <label class="control-label">Email Server :</label>
+                    <div class="controls">
+                        <input type="text" name="setting[smtpserver]" value="{{setting.smtpserver}}" class="span9 form-control" >
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Email :</label>
+                    <div class="controls">
+                        <input type="text" name="setting[smtpmail]" value="{{setting.smtpmail}}" class="span9 form-control" >
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Email Şifre :</label>
+                    <div class="controls">
+                        <input type="text" name="setting[smtppassword]" value="{{setting.smtppassword}}" class="span9 form-control" >
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">SMTP PORT :</label>
+                    <div class="controls">
+                        <input type="text" name="setting[smtpport]" value="{{setting.smtpport}}" class="span9 form-control" >
+                    </div>
+                </div>
+            </div>
+            <div id="tab3" class="tab-pane">
+                <b>İletişim Sayfası</b>
+                <div class="control-group">
+                    <label class="control-label">İletişim :</label>
+                    <div class="controls">
+                        <textarea id="contact" name="setting[contact]" class="span9 form-control">{{ setting.contact }}</textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div id="tab4" class="tab-pane">
+                <b>Hakkımızda Sayfası</b>
+                <div class="control-group">
+                    <label class="control-label">Hakkımızda :</label>
+                    <div class="controls">
+                        <textarea id="aboutus" name="setting[aboutus]" class="span9 form-control">{{ setting.aboutus }}</textarea>
+                    </div>
+                </div>
+            </div>
+            <div id="tab5" class="tab-pane">
+                <b>Referanslar</b>
+                <div class="control-group">
+                    <label class="control-label">Referanslar :</label>
+                    <div class="controls">
+                        <textarea id="referances" name="setting[referances]" class="span9 form-control">{{ setting.referances }}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-success">Kaydet
+        </button>
+    </div>
+</form>
+

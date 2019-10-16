@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+<!--header-->
+<div class="header">
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-left">
+                <ul class="support">
+                    <li><a href="#"><label> </label></a></li>
+                    <li><a href="#">24x7 Canlı<span class="live"> Destek</span></li>
+                </ul>
+                <ul class="support">
+                    <li class="van"><a href="#"><label> </label></a></li>
+                    <li><a href="#">Ücretsiz Kargo<span class="live"></span></a></li>
+                </ul>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="top-header-right">
+                <ul class="support">
+                    <li><a href="{{ path('hakkimizda') }}">Hakkımızda<span class="live"></span></a></li>
+                </ul>
+                <ul class="support">
+                    <li><a href="{{ path('referanslar') }}">Referanslar<span class="live"></span></a></li>
+                </ul>
+                <ul class="support">
+                    <li><a href="{{ path('iletisim') }}">İletişim<span class="live"></span></a></li>
+                </ul>
+
+                <!---->
+                <div class="clearfix"> </div>
+            </div>
+
+
+                <!---->
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="bottom-header">
+        <div class="container">
+            <div class="header-bottom-left">
+                <div class="logo">
+                    <a href="{{ path('home') }}"><img src="{{ asset('images') }}/logo.png" alt=" " /></a>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="header-bottom-right">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <div class="account"><a href="{{ path('userpanel_show') }}"><span> </span>{{ app.user.name }}</a></div>
+                    <ul class="login">
+                        <li><a href="{{ path('app_logout') }}"><span> </span>Çıkış Yap</a></li>
+                    </ul>
+                {% else %}
+                    <div class="account" style="visibility: hidden"><a href="#"><span> </span>YOUR ACCOUNT</a></div>
+                    <ul class="login">
+                        <li><a href="{{ path('app_login') }}"><span> </span>GİRİŞ</a></li> |
+                        <li ><a href="{{ path('new_user') }}">KAYDOL</a></li>
+                    </ul>
+                {% endif %}
+
+                <div class="cart"><a href="{{ path('shopcart_index') }}"><span> </span>SEPET</a></div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+<!---->

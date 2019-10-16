@@ -1,0 +1,96 @@
+<style>
+    ul#menu-v, #menu-v ul
+    {
+        width:305px; /* Main Menu width */
+        border:1px solid #FBFBFC;
+        list-style:none; margin:0; padding:0;
+        z-index:9;
+    }
+
+    #menu-v li
+    {
+        margin:0;padding:0;
+        position:relative;
+        /*fallback color*/
+        background-color:#FBFBFC;
+        transition:background 0.5s;
+
+    }
+    #menu-v li:hover
+    {
+        background-color:rgba(255,255,255,0.5);
+
+    }
+
+    #menu-v a
+    {
+        font:normal 18px Arial;
+        font-family: 'Open Sans', sans-serif;
+        font-weight:600;
+        border-top:1px solid #CCCCCC;
+        display:block;
+        color:#000000;
+        text-decoration:none;
+        line-height:45px;
+        padding-left:22px;
+        position:relative;
+    }
+
+    #menu-v li:first-child a
+    {
+        border-top:0;
+    }
+    #menu-v a:hover{
+        background: #1DBAA5;
+
+    }
+
+    #menu-v a.arrow::after{
+        content:'';
+        position:absolute;
+        display:inline;
+        top:50%;
+        margin-top:-4px;
+        right:8px;
+        border-width:4px;
+        border-style:solid;
+        border-color:transparent transparent transparent black;
+        transition:border-color 0.5s;
+    }
+
+    #menu-v li a.arrow:hover::after
+    {
+        background-color: #666;
+        border-color:transparent transparent transparent red;
+    }
+
+    /*Sub level menu items
+    ---------------------------------------*/
+    #menu-v li ul
+    {
+        min-width:180px; /* Sub level menu min width */
+        position:absolute;
+        display:none;
+        left:100%;
+        top:0;
+    }
+
+    #menu-v li:hover > ul
+    {
+        display:block;
+    }
+
+</style>
+<div class="sub-cate">
+    <div class=" top-nav rsidebar span_1_of_left">
+        <h3 class="cate">KATEGORİLER</h3>
+        <ul id="menu-v">
+            <li><a href="{{ path('userpanel_show') }}">Bilgilerim</a></li>
+            <li><a href="{{ path('userpanel_edit') }}">Düzenle</a></li>
+            <li><a href="{{ path('orders_index') }}">Siparişlerim</a></li>
+        </ul>
+    </div>
+    <!--initiate accordion-->
+</div>
+<div class="clearfix"> </div>
+</div>

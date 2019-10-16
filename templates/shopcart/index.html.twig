@@ -1,0 +1,69 @@
+{% extends 'frontbase.html.twig' %}
+{% block title %}Sepet - YK Shop{% endblock %}
+
+{% block header %} {% include ('home/_header.html.twig') %}{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{ asset('css') }}/etalage.css" type="text/css" media="all"/>
+
+<script src="{{ asset('js') }}/jquery.etalage.min.js"></script>
+
+
+
+
+<div class="container">
+
+    <div class="wrap-in">
+        <div>
+        </div>
+    </div>
+    <!-------------------->
+
+    <div class=" single_top">
+
+
+
+    <h2 style="color: #F97E76;">Siparişlerim</h2>
+        {{ include ('messages.html.twig') }}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ürün Resmi</th>
+                <th>Ürün İsmi</th>
+                <th>Fiyatı</th>
+                <th>Adet</th>
+                <th>Toplam</th>
+                <th>Sil</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% set total=0 %}
+        {% for shopcart in shopcarts %}
+            <tr>
+                <td><img src="{{ asset('uploads') }}/images/{{ shopcart.image }}" height="50"></td>
+                <td>{{ shopcart.title }}</td>
+                <td>₺ {{ shopcart.sprice }}</td>
+                <td>{{ shopcart.quantity }}</td>
+                <td>₺ {{ shopcart.quantity * shopcart.sprice }}</td>
+                <td>
+                <a href="{{ path('shopcart_del',{'id': shopcart.id}) }}" onclick="return confirm('Bu ürünü silmek istiyor musunuz?')" class="btn btn-mini btn-danger">Sil</a>
+                </td>
+            </tr>
+            {% set total=total+ (shopcart.quantity * shopcart.sprice) %}
+        {% else %}
+            <tr>
+                <td colspan="5">Sepetinizde Ürün Bulunmamaktadır !</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="5"><b>Alışveriş tutarı : ₺ {{ total }}</b> </td>
+        </tr>
+        </tbody>
+    </table>
+        <a href="{{ path('orders_new') }}" class="btn btn-block btn-success btn-large">Satın Al</a>
+
+    </div>
+
+    {% endblock %}
+    {% block sidebar %} {% include ('home/_usersidebar.html.twig') %}{% endblock %}

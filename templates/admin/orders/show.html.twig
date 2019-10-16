@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %} Sipariş Detayı{% endblock %}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ asset('admin') }}/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ asset('admin') }}/css/bootstrap-responsive.min.css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+
+
+</head>
+<body>
+<div id="content" xmlns="http://www.w3.org/1999/html">
+    <div id="content-header">
+
+        <h1>Sipariş Detayı
+
+        </h1>
+        {{ include('messages.html.twig') }}
+        <div class="widget-box">
+            <div class="widget-content nopadding">
+                <table class="table table-bordered table-striped">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ order.id }}</td>
+        </tr>
+        <tr>
+            <th>UserId</th>
+            <td>{{ order.userid }}</td>
+        </tr>
+        <tr>
+            <th>Tutar</th>
+            <td>{{ order.amount }}</td>
+        </tr>
+
+
+
+            <tr>
+                <th>Ad Soyad</th>
+                <td>{{ order.name }}</td>
+            </tr>
+            <tr>
+                <th>Adres</th>
+                <td>{{ order.address }}</td>
+            </tr>
+            <tr>
+                <th>Şehir</th>
+                <td>{{ order.city }}</td>
+            </tr>
+            <tr>
+                <th>Telefon</th>
+                <td>{{ order.phone }}</td>
+            </tr>
+            <form action="{{ path('admin_orders_update',{'id':order.id}) }}" method="post">
+
+            <tr>
+                <th>Takip Numarası</th>
+                <td><textarea name="shipinfo" cols="100" rows="3">{{ order.shipinfo }}</textarea> </td>
+            </tr>
+                <tr>
+                    <th>Admin Notu</th>
+                    <td><textarea name="note" cols="100" rows="3">{{ order.note }}</textarea> </td>
+                </tr>
+            <tr>
+                <th>Sipariş Durumu</th>
+                <td><select name="status">
+                        <option>{{ order.status }}</option>
+                        <option>Accepted</option>
+                        <option>InShipping</option>
+                        <option>Canceled</option>
+                        <option>Completed</option>
+                    </select>
+                <input type="submit" value="Güncelle">
+                </td>
+            </tr>
+            </form>
+        </tbody>
+    </table>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Ürün İsmi</th>
+                <th>Ürün Fiyatı</th>
+                <th>Ürün Adet</th>
+                <th>Toplam</th>
+                <th>Ürün Durumu</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% set total=0 %}
+            {% for rs in orderdetail %}
+                <tr>
+                    <td>{{ rs.name }}</td>
+                    <td>₺ {{ rs.price }}</td>
+                    <td>{{ rs.quantity}}</td>
+                    <td>₺ {{ rs.amount}}</td>
+                    <td>{{ rs.status}}</td>
+                </tr>
+
+            {% else %}
+                <tr>
+                    <td colspan="5">Sipariş Detayı !</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="5"><b>Alışveriş tutarı : ₺ {{ order.amount }}</b> </td>
+            </tr>
+            </tbody>
+        </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

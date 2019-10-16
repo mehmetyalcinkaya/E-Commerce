@@ -1,0 +1,46 @@
+{% extends 'frontbase.html.twig' %}
+{% block title %}{{ data[0].title }} - YK Shop{% endblock %}
+{% block keywords %}{{ data[0].keywords }}{% endblock %}
+{% block description %}{{ data[0].description }}{% endblock %}
+{% block header %} {% include ('home/_header.html.twig') %}{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="wrap-in">
+        <div>
+        </div>
+    </div>
+    <!-------------------->
+    <div class="reservation_top">
+
+
+        <div class="women-product">
+
+            <!-- grids_of_4 -->
+            <div class="grid-product">
+                <h1>{{ data[0].title }}</h1>
+                <br>
+                {% for rs in products  %}
+                <div class="  product-grid">
+                    <div class="content_box">
+                        <a><div class="left-grid-view grid-view-left"><a href="{{ path('product_detail',{'id':rs.id}) }}">
+                                <img src="{{ asset('uploads') }}/images/{{ rs.image }}" class="img-responsive watch-right" alt="" title="{{ rs.title }}">
+
+                            </a>
+                        </div>
+                        <h4><a href="{{ path('product_detail',{'id':rs.id}) }}">{{ rs.title }}</a></h4>
+                        <h4><strong>₺ {{ rs.sprice }}</strong></h4>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+    {% block sidebar %} {% include ('home/_sidebar.html.twig') %}{% endblock %}
+
+
+

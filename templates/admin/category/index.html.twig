@@ -1,0 +1,79 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}Kategori Listesi{% endblock %}
+{% block content %}
+    <div id="content">
+        <div id="content-header">
+            <div id="breadcrumb"> <a href="#"  class="tip-bottom"><i class="icon icon-th-list"></i>Kategoriler</a></div>
+            <h1>Kategori Listesi
+                &nbsp<small><a href="{{ path('admin_category_new') }}" class="btn btn-success">Kategori Ekle</a></small>
+            </h1>
+        </div>
+        <div class="container-fluid">
+            <div class="widget-box">
+                <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                </div>
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered data-table">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Üst Kategori</th>
+                            <th>İsim</th>
+                            <th>Anahtar Kelimeler</th>
+                            <th>Açıklama</th>
+                            <th>Durum</th>
+                            <th>Göster</th>
+                            <th>Düzenle</th>
+                            <th>Sil</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for category in categories %}
+                            <tr>
+                                <td>{{ category.id }}</td>
+                                {% set break = false %}
+                                {% for cn in parentcategory if not break %}
+                                    {% if category.parentid ==0 %}
+                                    <td>Ana Kategori</td>
+                                    {% set break = true %}
+                                    {% endif %}
+                                {% if category.parentid == cn.id and not break %}
+                                    <td>{{ cn.title }}</td>
+                                    {% set break = true %}
+                                {% endif %}
+                                {% endfor %}
+                                <td>{{ category.title }}</td>
+                                <td>{{ category.keywords }}</td>
+                                <td>{{ category.description }}</td>
+                                <td>{{ category.status }}</td>
+                                <td>
+                                    <a href="{{ path('admin_category_show', {'id': category.id}) }}" class="btn btn-mini btn-warning">Göster</a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('admin_category_edit', {'id': category.id,'pid': category.parentid}) }}" class="btn btn-mini btn-info">Düzenle</a>
+                                </td>
+
+                                <td>
+                                    {{ include('admin/category/_delete_form.html.twig') }}
+                                </td>
+                            </tr>
+                        {% else %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('admin') }}/js/jquery.min.js"></script>
+    <script src="{{ asset('admin') }}/js/jquery.ui.custom.js"></script>
+    <script src="{{ asset('admin') }}/js/bootstrap.min.js"></script>
+    <script src="{{ asset('admin') }}/js/jquery.uniform.js"></script>
+    <script src="{{ asset('admin') }}/js/select2.min.js"></script>
+    <script src="{{ asset('admin') }}/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('admin') }}/js/matrix.js"></script>
+    <script src="{{ asset('admin') }}/js/matrix.tables.js"></script>
+
+{% endblock %}

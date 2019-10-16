@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+   <title> {% block title %} {% endblock %}</title>
+
+    <link href="{{ asset('css') }}/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!--theme-style-->
+    <link href="{{ asset('css') }}/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="<title>{% block description %} Deneme desc{% endblock %}</title>">
+    <meta name="keywords" content="<title>{% block keywords %} Deneme Keywords{% endblock %}</title>">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!--//fonts-->
+    <script src="{{ asset('js') }}/jquery.min.js"></script>
+
+
+
+    <!--script-->
+</head>
+<body>
+    {% block header %} {% endblock %}
+    {% block slider %} {% endblock %}
+    {% block content %} {% endblock %}
+    {% block sidebar %} {% endblock %}
+
+
+
+
+
+
+
+<div class="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="latter">
+                <h3>© 2019 YK Shop A.Ş. Tüm Hakları Saklıdır.</h3>
+
+                <div class="clearfix"> </div>
+            </div>
+            <div class="latter-right">
+                <p>Designed by <a href="{{ path("home") }}"><i>Mehmet YALÇINKAYA</i></a></p>
+
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

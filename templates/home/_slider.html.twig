@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="shoes-grid">
+
+            <div class="wrap-in">
+                <div class="wmuSlider example1 slide-grid">
+                    <div class="wmuSliderWrapper">
+                        {% for rs in sliders %}
+                        <a href="{{ path('product_detail',{'id':rs.id}) }}">
+                        <article style="position: absolute; width: 100%; opacity: 0;">
+                            <div class="banner-matter">
+                                <div class="col-md-5 banner-bag">
+                                    <img class="img-responsive " src="{{ asset('uploads') }}/images/{{ rs.image }}" alt=" " />
+                                </div>
+                                <div class="col-md-7 banner-off">
+                                    <label>{{ rs.title }}</label>
+                                    <p>{{ rs.description }}</p>
+                                    <span class="on-get">SATIN AL</span>
+                                </div>
+
+                                <div class="clearfix"> </div>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    </div>
+                </a>
+        <ul class="wmuSliderPagination">
+            <li><a href="#" class="">0</a></li>
+            <li><a href="#" class="">1</a></li>
+            <li><a href="#" class="">2</a></li>
+        </ul>
+        <script src="{{ asset('js') }}/jquery.wmuSlider.js"></script>
+        <script>
+            $('.example1').wmuSlider();
+        </script>
+    </div>
+</div>
+</a>

@@ -1,0 +1,44 @@
+{% extends 'frontbase.html.twig' %}
+{% block title %}İletişim - {{ data[0].title }}{% endblock %}
+{% block keywords %}{{ data[0].keywords }}{% endblock %}
+{% block description %}{{ data[0].description }}{% endblock %}
+{% block header %} {% include ('home/_header.html.twig') %}{% endblock %}
+        {% block content %}
+        <!--Slider Divleri-->
+
+<div class="container">
+    <div class="shoes-grid">
+        <div class="wrap-in">
+            <div>
+            </div>
+        </div>
+       <!-------------------->
+        <div class="reservation_top">
+            <div class=" contact-form">
+                <h1>Bize Ulaşın</h1>
+                {{ include('messages.html.twig') }}
+                <div class="contact-form">
+                    <form method="post">
+                        <input type="text" name="messages[name]" class="textbox" placeholder="İsim" required="required">
+                        <input type="email" name="messages[email]" class="textbox"  placeholder="Email" required="required">
+                        <input type="text" name="messages[subject]" class="textbox" placeholder="Konu" required="required">
+                        <textarea name="messages[message]" placeholder="Mesaj" required="required"></textarea>
+                        <input type="hidden" name="messages[status]" value="New">
+                        <input type="hidden" name="token" value="{{ csrf_token('form-message') }}" />
+                        <input type="submit" value="Gönder">
+                        <div class="clearfix"> </div>
+                    </form>
+                    <h1>İletişim Bilgilerimiz</h1><br>
+                    <p>{{ data[0].contact|raw }}</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+{% endblock %}
+{% block sidebar %} {% include ('home/_sidebar.html.twig') %}{% endblock %}
+
+
+
+

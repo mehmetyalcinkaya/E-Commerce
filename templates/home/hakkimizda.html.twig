@@ -1,0 +1,31 @@
+{% extends 'frontbase.html.twig' %}
+{% block title %}Hakkımızda - {{ data[0].title }}{% endblock %}
+{% block keywords %}{{ data[0].keywords }}{% endblock %}
+{% block description %}{{ data[0].description }}{% endblock %}
+{% block header %} {% include ('home/_header.html.twig') %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="shoes-grid">
+        <div class="wrap-in">
+            <div>
+            </div>
+        </div>
+        <!-------------------->
+        <div class="reservation_top">
+                <h1>Hakkımızda</h1>
+                <br>
+                <p>
+                    {{ data[0].aboutus|raw }}
+                </p>
+            </div>
+
+        <div class="clearfix"> </div>
+    </div>
+
+{% endblock %}
+{% block sidebar %} {% include ('home/_sidebar.html.twig') %}{% endblock %}
+
+
+
+

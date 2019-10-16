@@ -1,0 +1,69 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Üye Düzenleme{% endblock %}
+
+{% block content %}
+    <div id="content" xmlns="http://www.w3.org/1999/html">
+        <div id="content-header">
+            <div id="breadcrumb"> <a href="#"  class="tip-bottom"><i class="icon icon-signal"></i>Üyeler</a></div>
+            <h1>Üye Düzenleme</h1>
+
+            <div class="widget-box">
+                <div class="widget-content nopadding">
+                    <form class="form-horizontal" method="post">
+                        <div class="control-group">
+                            <label class="control-label">Adı Soyadı :</label>
+                            <div class="controls">
+                                <input type="text" name="user[name]" value="{{user.name}}" class="span9 form-control" placeholder="Adı Soyadı" required="required">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Email:</label>
+                            <div class="controls">
+                                <input type="email" name="user[email]" value="{{user.email}}" class="span9 form-control" placeholder="Email" required="required">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Password :</label>
+                            <div class="controls">
+                                <input type="password" name="user[password]" value="{{ user.password }}" class="span9 form-control" placeholder="Enter Password" required="required">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" >Türü</label>
+                            <div class="controls">
+                                <select name="user[roles]" class="form-control">
+                                    {% for item in user.roles %}
+                                        <option selected>{{ item }}</option>
+                                    {% endfor %}
+                                    <option>ROLE_ADMIN</option>
+                                    <option>ROLE_USER</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Aktif Durumu</label>
+                            <div class="controls">
+                                <select name="user[status]" class="form-control" >
+                                    <option selected>{{ user.status }}</option>
+                                    <option value="True">True</option>
+                                    <option value="False">False</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">Kaydet
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        </div>
+
+{% endblock %}

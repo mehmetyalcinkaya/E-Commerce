@@ -1,0 +1,91 @@
+{% extends 'frontbase.html.twig' %}
+{% block title %}Sipariş Detayı - YK Shop{% endblock %}
+
+{% block header %} {% include ('home/_header.html.twig') %}{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{ asset('css') }}/etalage.css" type="text/css" media="all"/>
+
+<script src="{{ asset('js') }}/jquery.etalage.min.js"></script>
+
+
+
+
+<div class="container">
+
+    <div class="wrap-in">
+        <div>
+        </div>
+    </div>
+    <!-------------------->
+
+    <div class=" single_top">
+
+        <h2 style="color: #F97E76;">Sipariş Detayı</h2>
+
+    <table class="table">
+        <tbody>
+
+            <tr>
+                <th>Ad Soyad</th>
+                <td>{{ order.name }}</td>
+            </tr>
+            <tr>
+                <th>Adres</th>
+                <td>{{ order.address }}</td>
+            </tr>
+            <tr>
+                <th>Şehir</th>
+                <td>{{ order.city }}</td>
+            </tr>
+            <tr>
+                <th>Telefon</th>
+                <td>{{ order.phone }}</td>
+            </tr>
+            <tr>
+                <th>Takip Numarası</th>
+                <td>{{ order.shipinfo }}</td>
+            </tr>
+            <tr>
+                <th>Sipariş Durumu</th>
+                <td>{{ order.status }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Ürün İsmi</th>
+                <th>Ürün Fiyatı</th>
+                <th>Ürün Adet</th>
+                <th>Toplam</th>
+                <th>Ürün Durumu</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% set total=0 %}
+            {% for rs in orderdetail %}
+                <tr>
+                    <td>{{ rs.name }}</td>
+                    <td>₺ {{ rs.price }}</td>
+                    <td>{{ rs.quantity}}</td>
+                    <td>₺ {{ rs.amount}}</td>
+                    <td>{{ rs.status}}</td>
+                </tr>
+
+            {% else %}
+                <tr>
+                    <td colspan="5">Sipariş Detayı !</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="5"><b>Alışveriş tutarı : ₺ {{ order.amount }}</b> </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    {% endblock %}
+    {% block sidebar %} {% include ('home/_usersidebar.html.twig') %}{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Üye Listesi{% endblock %}
+
+{% block content %}
+    <div id="content">
+        <div id="content-header">
+            <div id="breadcrumb"> <a href="#"  class="tip-bottom"><i class="icon icon-signal"></i>Üyeler</a></div>
+            <h1>Üye Listesi
+            &nbsp<small><a href="{{ path('admin_user_new') }}" class="btn btn-success">Üye Ekle</a></small>
+            </h1>
+        </div>
+        <div class="container-fluid">
+            <div class="widget-box">
+                <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                </div>
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered data-table">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Adı Soyadı</th>
+                            <th>Email</th>
+                            <th>Roller</th>
+                            <th>Durum</th>
+                            <th>Düzenle</th>
+                            <th>Sil</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in users %}
+                            <tr class="odd gradeX">
+                                <td>{{ row.id }}</td>
+                                <td>{{ row.name }}</td>
+                                <td>{{ row.email }}</td>
+                                <td>{% for item in row.roles %}
+                                        {{ item }}
+                                        {% endfor %}</td>
+                                <td>{{ row.status }}</td>
+                                <td><a href="{{ path('admin_user_edit',{'id': row.id}) }}"  class="btn btn-mini btn-info">Düzenle</a></td>
+                                <td><a href="{{ path('admin_user_delete',{'id': row.id}) }}" onclick="return confirm('Üyeyi silmek istiyor musunuz?')" class="btn btn-mini btn-danger">Sil</a></td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('admin') }}/js/jquery.min.js"></script>
+    <script src="{{ asset('admin') }}/js/jquery.ui.custom.js"></script>
+    <script src="{{ asset('admin') }}/js/bootstrap.min.js"></script>
+    <script src="{{ asset('admin') }}/js/jquery.uniform.js"></script>
+    <script src="{{ asset('admin') }}/js/select2.min.js"></script>
+    <script src="{{ asset('admin') }}/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('admin') }}/js/matrix.js"></script>
+    <script src="{{ asset('admin') }}/js/matrix.tables.js"></script>
+
+{% endblock %}

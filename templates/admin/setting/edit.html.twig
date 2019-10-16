@@ -1,0 +1,37 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}Ayarlar {% endblock %}
+{% block content %}
+    <div id="content" xmlns="http://www.w3.org/1999/html">
+        <div id="content-header">
+            <div id="breadcrumb"> <a href="#"  class="tip-bottom"><i class="icon icon-cog"></i>Ayarlar</a></div>
+            <h1>Ayarlar
+            </h1>
+            {{ include('admin/messages.html.twig') }}
+                <div class="widget-content nopadding">
+                    {{ include('admin/setting/_form.html.twig', {'button_label': 'Update'}) }}
+                </div>
+
+        </div>
+    </div>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#contact' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#aboutus' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#referances' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+{% endblock %}

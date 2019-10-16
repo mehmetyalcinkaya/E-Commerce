@@ -1,0 +1,16 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}Kategori Ekleme{% endblock %}
+{% block content %}
+    <div id="content" xmlns="http://www.w3.org/1999/html">
+        <div id="content-header">
+            <div id="breadcrumb"> <a href="#"  class="tip-bottom"><i class="icon icon-th-list"></i>Kategoriler</a></div>
+            <h1>Kategori Ekleme
+            </h1>
+            <div class="widget-box">
+                <div class="widget-content nopadding">
+                    {{ include('admin/category/_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

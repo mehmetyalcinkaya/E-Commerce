@@ -1,0 +1,56 @@
+{% extends 'frontbase.html.twig' %}
+{% block title %}Userpanel - Yk Shop{% endblock %}
+{% block header %} {% include ('home/_header.html.twig') %}{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="shoes-grid">
+    </div>
+    <!-------------------->
+    <div class="account_grid">
+
+        <div class=" login-right">
+
+    <div id="content" xmlns="http://www.w3.org/1999/html">
+        <div id="content-header">
+            <h2>Profil Bilgileri</h2>
+            <div class="widget-box">
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ app.user.email }}</td>
+                        </tr>
+                        <tr>
+                            <th>İsim</th>
+                            <td>{{ app.user.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Adres</th>
+                            <td>{{ app.user.address }}</td>
+                        </tr>
+                        <tr>
+                            <th>Şehir</th>
+                            <td>{{ app.user.city }}</td>
+                        </tr>
+                        <tr>
+                            <th>Telefon</th>
+                            <td>{{ app.user.phone }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+
+
+    <div class="clearfix"> </div>
+    <div class="clearfix"> </div>
+    </div>
+{% endblock %}
+{% block sidebar %}
+{% include ('home/_usersidebar.html.twig') %}
+{% endblock %}

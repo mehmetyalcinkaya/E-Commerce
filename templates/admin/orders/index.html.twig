@@ -1,0 +1,70 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}Siparişler{% endblock %}
+{% block content %}
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="#"  class="tip-bottom"><i class="icon-shopping-cart"></i>Siparişler</a></div>
+        <h1>Sipariş Listesi
+        </h1>
+    </div>
+    <div class="container-fluid">
+        <div class="widget-box">
+            <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+            </div>
+            <div class="widget-content nopadding">
+                <table class="table table-bordered data-table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Userid</th>
+                <th>Tutar</th>
+                <th>Ad Soyad</th>
+                <th>Şehir</th>
+                <th>Telefon</th>
+                <th>Takip No</th>
+                <th>Admin Notu</th>
+                <th>Sipariş Durumu</th>
+                <th>Detay</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.userid }}</td>
+                    <td>{{ order.amount }}</td>
+                    <td>{{ order.name }}</td>
+                    <td>{{ order.city }}</td>
+                    <td>{{ order.phone }}</td>
+                    <td>{{ order.shipinfo }}</td>
+                    <td>{{ order.note }}</td>
+                    <td>{{ order.status }}</td>
+                    <td>
+                        <a href="javascript:openWin('{{ path('admin_orders_show', {'id': order.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollBars=no,resizable=no,width=750,height=600');" class="btn btn-mini btn-warning">Detay</a>
+
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="11">Siparişiniz Bulunmamaktadır !</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('admin') }}/js/jquery.min.js"></script>
+    <script src="{{ asset('admin') }}/js/jquery.ui.custom.js"></script>
+    <script src="{{ asset('admin') }}/js/bootstrap.min.js"></script>
+    <script src="{{ asset('admin') }}/js/jquery.uniform.js"></script>
+    <script src="{{ asset('admin') }}/js/select2.min.js"></script>
+    <script src="{{ asset('admin') }}/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('admin') }}/js/matrix.js"></script>
+    <script src="{{ asset('admin') }}/js/matrix.tables.js"></script>
+
+{% endblock %}

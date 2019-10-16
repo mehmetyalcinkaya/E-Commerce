@@ -1,0 +1,49 @@
+
+<form name="order" action="{{ path('orders_new') }}" method="post">
+    <div>
+        <span>Ödenecek Tutar<label>*</label></span>
+        <input type="text" name="orders[amount]" value="{{ total }}" readonly>
+    </div>
+
+
+<h3>KARGO ALICI BİLGİLERİ</h3>
+
+    <div>
+        <span>Adı Soyadı<label>*</label></span>
+        <input type="text" name="orders[name]" value="{{ app.user.name }}" placeholder="Ad Soyad" required>
+    </div>
+    <div>
+        <span>Adresi<label>*</label></span>
+        <input type="text" name="orders[address]" value="{{ app.user.address }}" placeholder="Adresi" required>
+    </div>
+    <div>
+        <span>Şehir<label>*</label></span>
+        <input type="text" name="orders[city]" value="{{ app.user.city }}" placeholder="Şehir" required>
+    </div>
+    <div>
+        <span>Telefon<label>*</label></span>
+        <input type="text" name="orders[phone]" value="{{ app.user.phone }}" placeholder="Telefon" required>
+    </div>
+
+    <h3>KREDİ KARTI BİLGİLERİ</h3>
+
+    <div>
+        <span>Adı Soyadı</span>
+        <input type="text" name="cardname"  placeholder="Kart Adı Soyadı" >
+    </div>
+    <div>
+        <span>Kart Numarası</span>
+        <input type="text" name="cardnumber"  placeholder="Kart Numarası" >
+    </div>
+    <div>
+        <span>Son Kullanma Tarihi</span>
+        <input type="text" name="cardskt"  placeholder="AY/YIL" >
+    </div>
+    <div>
+        <span>Güvenlik Kodu</span>
+        <input type="text" name="cardcvc"  placeholder="Güvenlik Kodu" >
+    </div>
+
+    <input type="hidden" name="token" value="{{ csrf_token('form-order') }}" />
+    <input type="submit" value="SATIN AL">
+</form>

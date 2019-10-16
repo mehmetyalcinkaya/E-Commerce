@@ -1,0 +1,97 @@
+
+<form class="form-horizontal" method="post">
+    <div class="control-group">
+        <label class="control-label">Kategori :</label>
+        <div class="controls">
+            <select name="product[category_id]" class="form-control" >
+                {% if (catname) %}
+                    <option value="{{ product.categoryid }}">{{ catname[0].title }}</option>
+                {% endif %}
+
+                {% for cat in catlist %}
+                    <option value="{{ cat.id }}">{{ cat.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Title :</label>
+        <div class="controls">
+            <input type="text" name="product[title]" value="{{product.title}}" class="span9 form-control" placeholder="Title" required="required">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Keywords :</label>
+        <div class="controls">
+            <input type="text" name="product[keywords]" value="{{product.keywords }}" class="span9 form-control" placeholder="Keywords" required="required">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Decription :</label>
+        <div class="controls">
+            <input type="text" name="product[description]" value="{{ product.description }}" class="span9 form-control" placeholder="Decription" required="required">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Alış Fiyatı :</label>
+        <div class="controls">
+            <input type="text" name="product[pprice]" value="{{ product.pprice }}" class="span9 form-control" placeholder="Alış Fiyatı" required="required">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Satış Fiyatı :</label>
+        <div class="controls">
+            <input type="text" name="product[sprice]" value="{{ product.sprice }}" class="span9 form-control" placeholder="Satış Fiyatı" required="required">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Miktar :</label>
+        <div class="controls">
+            <input type="text" name="product[amount]" value="{{ product.amount }}" class="span9 form-control" placeholder="Miktar" required="required">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Uyarı Miktarı :</label>
+        <div class="controls">
+            <input type="text" name="product[min]" value="{{ product.min }}" class="span9 form-control" placeholder="Uyarı Miktarı" required="required">
+        </div>
+    </div>
+
+        <input type="hidden" name="product[image]" value="{{ product.image }}" class="span9 form-control">
+
+    <div class="control-group">
+        <label class="control-label">Detay :</label>
+        <div class="controls">
+            <textarea id="editor" name="product[detail]" class="span9 form-control">{{ product.detail }}</textarea>
+        </div>
+    </div>
+
+
+    <div class="control-group">
+        <label class="control-label">Slider Durumu</label>
+        <div class="controls">
+            <select name="product[slider]" class="form-control" >
+                <option selected>{{ product.slider }}</option>
+                <option value="True">True</option>
+                <option  value="False">False</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">Aktif Durumu</label>
+        <div class="controls">
+            <select name="product[status]" class="form-control" >
+                <option selected>{{ product.status }}</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-success">Kaydet
+        </button>
+    </div>
+</form>
+

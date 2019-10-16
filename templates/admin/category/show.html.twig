@@ -1,0 +1,44 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}Kategori Detayı{% endblock %}
+{% block content %}
+    <div id="content" xmlns="http://www.w3.org/1999/html">
+        <div id="content-header">
+            <div id="breadcrumb"> <a href="#"  class="tip-bottom"><i class="icon icon-th-list"></i>Kategoriler</a></div>
+            <h1>Kategori Detayı
+                &nbsp<small><a href="{{ path('admin_category_new') }}" class="btn btn-success">Kategori Ekle</a></small>
+            </h1>
+            <div class="widget-box">
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ category.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Parentid</th>
+                            <td>{{ category.parentid }}</td>
+                        </tr>
+                        <tr>
+                            <th>Title</th>
+                            <td>{{ category.title }}</td>
+                        </tr>
+                        <tr>
+                            <th>Keywords</th>
+                            <td>{{ category.keywords }}</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>{{ category.description }}</td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>{{ category.status }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

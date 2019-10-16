@@ -1,0 +1,52 @@
+
+<form class="form-horizontal" method="post">
+
+
+    <div class="control-group">
+        <label class="control-label">Üst Kategori :</label>
+        <div class="controls">
+            <select name="category[parentid]" class="form-control" >
+                {% if category.parentid !=0 %}
+                    <option value="{{ category.id }}">{{ category.title }}</option>
+                {% else %}
+                {% endif %}
+                <option value="0">Ana Kategori</option>
+                {% for cat in catlist %}
+                    <option value="{{ cat.id }}">{{ cat.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Title :</label>
+        <div class="controls">
+            <input type="text" name="category[title]" value="{{category.title}}" class="span9 form-control" placeholder="Title" required="required">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Keywords :</label>
+        <div class="controls">
+            <input type="text" name="category[keywords]" value="{{category.keywords }}" class="span9 form-control" placeholder="Keywords" required="required">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Decription :</label>
+        <div class="controls">
+            <input type="text" name="category[description]" value="{{ category.description }}" class="span9 form-control" placeholder="Decription" required="required">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Aktif Durumu</label>
+        <div class="controls">
+            <select name="category[status]" class="form-control" >
+                <option selected>{{ category.status }}</option>
+                <option value="True">True</option>
+                <option  value="False">False</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-success">Kaydet
+        </button>
+    </div>
+</form>

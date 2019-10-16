@@ -1,0 +1,26 @@
+
+<div class="product-left">
+
+    {% for rs in randproducts %}
+        <br><br><br>
+    <div class="col-md-4 chain-grid">
+        <a href="{{ path('product_detail',{'id':rs.id}) }}"><img class="img-responsive chain" src="{{ asset('uploads') }}/images/{{ rs.image }}" alt=" " title="{{ rs.title }}" /></a>
+        <div class="grid-chain-bottom">
+            <h6><a href="{{ path('product_detail',{'id':rs.id}) }}">{{ rs.title }}</a></h6>
+            <div class="star-price">
+                <div class="dolor-grid">
+                    <span class="actual">₺ {{ rs.sprice }}</span>
+
+                </div>
+                <a class="now-get get-cart" href="{{ path('product_detail',{'id':rs.id}) }}">SATIN AL</a>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+<div class="clearfix"> </div>
+</div>

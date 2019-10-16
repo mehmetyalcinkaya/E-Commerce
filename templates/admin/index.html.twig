@@ -1,0 +1,94 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}Anasayfa{% endblock %}
+{% block content %}
+    <div id="content">
+        <div id="content-header">
+            <div id="breadcrumb"> <a href="#"  class="tip-bottom"><i class="icon-home"></i>Anasayfa</a></div>
+        </div>
+        <div class="container-fluid">
+            <h3>Son Gelen Siparişler</h3>
+            <div class="widget-box">
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Sipariş Tutarı</th>
+                            <th>isim</th>
+                            <th>Adres</th>
+                            <th>Şehir</th>
+                            <th>Telefon</th>
+                            <th>Sipariş Durumu</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for siparis in siparisler %}
+                            <tr class="odd gradeX">
+                                <td>{{ siparis.amount }}</td>
+                                <td>{{ siparis.name }}</td>
+                                <td > {{ siparis.address }}</td>
+                                <td >{{ siparis.city }}</td>
+                                <td >{{ siparis.phone }}</td>
+                                <td >{{ siparis.status }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <h3>Son Gelen Mesajlar</h3>
+            <div class="widget-box">
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>İsim</th>
+                            <th>Email</th>
+                            <th>Konu</th>
+                            <th>Mesaj</th>
+                            <th>Durum</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for msj in mesaj %}
+                            <tr class="odd gradeX">
+                                <td>{{ msj.name }}</td>
+                                <td>{{ msj.email }}</td>
+                                <td > {{ msj.subject }}</td>
+                                <td >{{ msj.message }}</td>
+                                <td >{{ msj.status }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <h3>Son Eklenen Ürünler</h3>
+            <div class="widget-box">
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Ürün Adı</th>
+                            <th>Stok</th>
+                            <th>Alış Fiyatı</th>
+                            <th>Satış Fiyatı</th>
+                            <th>Ürün Resmi</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for urun in urunler %}
+                            <tr class="odd gradeX">
+                                <td>{{ urun.title }}</td>
+                                <td>{{ urun.amount }}</td>
+                                <td > {{ urun.pprice }}</td>
+                                <td >{{ urun.sprice }}</td>
+                                <td ><img src="{{ asset('uploads') }}/images/{{ urun.image }}" width="30"></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
